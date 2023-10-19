@@ -264,6 +264,7 @@ enum wl_shm_format xdpw_format_wl_shm_from_drm_fourcc(uint32_t format) {
 		return WL_SHM_FORMAT_ARGB8888;
 	case DRM_FORMAT_XRGB8888:
 		return WL_SHM_FORMAT_XRGB8888;
+	case DRM_FORMAT_BGR888:
 	case DRM_FORMAT_RGBA8888:
 	case DRM_FORMAT_RGBX8888:
 	case DRM_FORMAT_ABGR8888:
@@ -293,6 +294,7 @@ uint32_t xdpw_format_drm_fourcc_from_wl_shm(enum wl_shm_format format) {
 		return DRM_FORMAT_ARGB8888;
 	case WL_SHM_FORMAT_XRGB8888:
 		return DRM_FORMAT_XRGB8888;
+	case WL_SHM_FORMAT_BGR888:
 	case WL_SHM_FORMAT_RGBA8888:
 	case WL_SHM_FORMAT_RGBX8888:
 	case WL_SHM_FORMAT_ABGR8888:
@@ -318,6 +320,8 @@ uint32_t xdpw_format_drm_fourcc_from_wl_shm(enum wl_shm_format format) {
 
 enum spa_video_format xdpw_format_pw_from_drm_fourcc(uint32_t format) {
 	switch (format) {
+	case DRM_FORMAT_BGR888:
+		return SPA_VIDEO_FORMAT_BGR;
 	case DRM_FORMAT_ARGB8888:
 		return SPA_VIDEO_FORMAT_BGRA;
 	case DRM_FORMAT_XRGB8888:
